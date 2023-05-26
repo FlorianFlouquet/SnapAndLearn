@@ -44,7 +44,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       body: Container(
-        color: const Color.fromRGBO(93, 86, 147, 1.0),
+        width: double.infinity,
+        color: Theme.of(context).primaryColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -53,11 +54,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 'Click to open camera'.toUpperCase(),
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 35.0,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             AnimatedContainer(
