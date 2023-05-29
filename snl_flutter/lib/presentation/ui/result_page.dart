@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:snl_flutter/presentation/models/word_model.dart';
+import 'package:snl_flutter/presentation/ui/components/word_card.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
@@ -9,34 +10,41 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mockData = [
-      WordModel('私', ["trans1", "trans2"], 'kanji'),
+      WordModel(
+          '私',
+          [
+            "trans1",
+            "trans2",
+            "jjgdjlgdjfdjllgl",
+            "jgfjgdjgdjfogido",
+            "jddflgjldjgldjg"
+          ],
+          'kanji'),
       WordModel('わたし', ["trans1"], 'kana'),
     ];
 
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: Theme.of(context).primaryColorDark,
+        color: Theme.of(context).primaryColor,
         child: ListView(
           children: [
             Container(
               padding: const EdgeInsets.all(40),
-              alignment: Alignment.center,
+              color: Theme.of(context).primaryColorDark,
               child: Text(
                 'YOUR DECK',
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
-            Container(
-              color: Theme.of(context).primaryColor,
-              child: Column(
-                children: mockData
-                    .map(
-                      (e) => Text(e.word),
-                    )
-                    .toList(),
-              ),
-            )
+            Column(
+              children: mockData
+                  .map(
+                    (e) => WordCard(word: e),
+                  )
+                  .toList(),
+            ),
           ],
         ),
       ),
