@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:snl_flutter/presentation/models/word_model.dart';
+import 'package:snl_flutter/data/service/photo_service.dart';
 import 'package:snl_flutter/presentation/ui/components/word_card.dart';
 
 class ResultPage extends StatelessWidget {
@@ -9,19 +7,7 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mockData = [
-      WordModel(
-          '私',
-          [
-            "trans1",
-            "trans2",
-            "jjgdjlgdjfdjllgl",
-            "jgfjgdjgdjfogido",
-            "jddflgjldjgldjg"
-          ],
-          'kanji'),
-      WordModel('わたし', ["trans1"], 'kana'),
-    ];
+    final mockData = PhotoService().allData;
 
     return Scaffold(
       body: Container(
@@ -40,7 +26,7 @@ class ResultPage extends StatelessWidget {
             ),
             Column(
               children: mockData
-                  .map(
+                  .map<Widget>(
                     (e) => WordCard(word: e),
                   )
                   .toList(),

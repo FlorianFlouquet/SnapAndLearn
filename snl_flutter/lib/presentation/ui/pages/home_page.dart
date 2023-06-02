@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,19 +57,22 @@ class _HomePageState extends State<HomePage> {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
-            AnimatedContainer(
-              curve: Curves.ease,
-              duration: const Duration(milliseconds: 1200),
-              padding: const EdgeInsets.all(40),
-              decoration: BoxDecoration(
-                color: selected
-                    ? const Color.fromRGBO(71, 64, 121, 1.0)
-                    : const Color.fromRGBO(71, 64, 121, 0.5),
-                shape: BoxShape.circle,
-              ),
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                child: svgIcon,
+            TextButton(
+              onPressed: () => context.push("/camera"),
+              child: AnimatedContainer(
+                curve: Curves.ease,
+                duration: const Duration(milliseconds: 1200),
+                padding: const EdgeInsets.all(40),
+                decoration: BoxDecoration(
+                  color: selected
+                      ? const Color.fromRGBO(71, 64, 121, 1.0)
+                      : const Color.fromRGBO(71, 64, 121, 0.5),
+                  shape: BoxShape.circle,
+                ),
+                child: Container(
+                  margin: const EdgeInsets.all(10),
+                  child: svgIcon,
+                ),
               ),
             )
           ],
